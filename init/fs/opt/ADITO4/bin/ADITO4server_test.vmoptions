@@ -1,0 +1,21 @@
+# Enter one VM parameter per line
+
+# No GUI
+-Djava.awt.headless=true
+
+# Maximum Memory
+-Xmx1024M
+
+# ADITO Home location
+-Dadito.home=/opt/ADITO4
+
+# ADITO Data location
+-Dadito.data=/a/data/adito/test
+
+# Configfile
+-Dadito.serverconfig=/opt/ADITO4/config/test_serverconfig.xml
+
+# Ports
+-Dadito.server.port=7775
+-Dadito.server.managerport=7774
+-Dadito.server.webserverport=

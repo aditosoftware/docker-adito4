@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# run init scripts
+for file in "${AINIT}"/*.sh
+do
+  echo "calling '${file}'."
+  ${file}
+done
+
+/usr/local/bin/supervisord

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- JNLP file for ADITO4client. -->
+<jnlp
+    spec="6.0.18+"
+    codebase="http://{{WEBSTART_HOST_NAME}}/webstart/config"
+    href="test.jnlp">
+
+  <application-desc
+      main-class="de.adito.aditoweb.client.Client"
+      progress-class="de.adito.aditoweb.splash.WebstartProgressbar">
+
+    <!-- Host server address or dns name. -->
+    <argument>{{WEBSTART_HOST_NAME}}</argument>
+    <!-- Host server port number. -->
+    <argument>10075</argument>
+    <!-- Connection security. 0/1 - 0: off, 1: on -->
+    <argument>1</argument>
+    <!-- Connection type. 0/2/3 - 0: classic/nio, 2: stateless, 3: http -->
+    <argument>0</argument>
+    <!-- Client configuration storage location. -->
+    <argument>$USERHOME/.adito4/config/clientTest.xml</argument>
+
+  </application-desc>
+
+
+  <information>
+    <title>{{SYSTEM_NAME}} ADITO4 Test</title>
+    <vendor>ADITO Software GmbH</vendor>
+    <description>ADITO4 Test Client for {{SYSTEM_NAME}}</description>
+    <homepage href="http://www.adito.de"/>
+    <icon href="adito32.png"/>
+    <icon href="splash.png" kind="splash"/>
+    <offline-allowed/>
+    <shortcut>
+      <desktop/>
+      <menu submenu="ADITO4"/>
+    </shortcut>
+  </information>
+  <information os="Windows">
+    <icon href="adito.ico" kind="shortcut"/>
+  </information>
+  <information os="Mac OS X">
+    <icon href="adito.icns" kind="shortcut"/>
+  </information>
+
+  <security>
+    <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.8" max-heap-size="512m"/>
+    <extension name="client_libs" href="../lib/client/client_libs.jnlp"/>
+    <property name="sun.java2d.noddraw" value="true"/>
+  </resources>
+
+</jnlp>

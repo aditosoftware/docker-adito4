@@ -1,0 +1,16 @@
+# install4j response file for ADITO4 4.4.0
+adito.installer.installservice$Boolean=false
+adito.installer.webstart.host=localhost
+adito.installer.webstart.port$Long=7779
+sys.adminRights$Boolean=true
+sys.component.3368$Boolean=false
+sys.component.Client$Boolean=false
+sys.component.ClientWebstart$Boolean=true
+sys.component.Designer$Boolean=false
+sys.component.Documentation$Boolean=false
+sys.component.Manager$Boolean=false
+sys.component.ProjektSystem$Boolean=true
+sys.component.Server$Boolean=true
+sys.installationDir=/opt/ADITO4
+sys.languageId=en
+sys.programGroupDisabled$Boolean=true
