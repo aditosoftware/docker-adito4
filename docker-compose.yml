@@ -1,0 +1,35 @@
+adito:
+  image: adito/adito4:dev
+  environment:
+    - JVM_XMX= # default is 1024M (M = Megabyte; G = Gigabyte)
+
+    - WEBSTART_HOST= #IP or DNS for the ADITO4-Server
+    - WEBSTART_URL= #only necessary if you use https and/or another port than 80 (example: https://adito4server:443)
+    - WEBSTART_PORT=
+    - WEBSTART_CONNECTION_TYPE= #Default is NETTY
+
+    - SRVCONF_DATABASE=adito #Name of the Database
+    - SRVCONF_DATABASETYP= #Database-Type (example: 12 = MariaDB; 7 = Derby)
+    - SRVCONF_HOST= #Database Host
+    - SRVCONF_PASSWORD= #Password for the Database-User
+    - SRVCONF_PORT= #Database-Port
+    - SRVCONF_USER= #Database-User
+    - SRVCONF_SERVER_ID= #Server-ID (example: default, production)
+  links:
+    - mariadb:mariadb
+  ports:
+    - "7779:7779" # adito
+    - "8080:80" # webstart
+  volumes:
+    - /volume/adito/serverlicense.jar:/opt/ADITO4/license/serverlicense.jar:ro
+
+mariadb:
+  image: mariadb:10.1
+  command: mysqld --lower_case_table_names=1
+  environment:
+    - MYSQL_ROOT_PASSWORD=
+    - MYSQL_DATABASE=
+    - MYSQL_USER=
+    - MYSQL_PASSWORD=
+  volumes:
+    - /volume/mariadb:/var/lib/mysql
