@@ -1,43 +1,18 @@
-# Pull base image.
 FROM ubuntu:14.04
 
 
+RUN apt-get update && apt-get install -y curl
+RUN curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz | tar -xzf - -C /opt
 
-# Install base stuff
-ADD install/supervisor.sh /a/install/
-RUN \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \
-  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list && \
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 && \
-  apt-get update && \
-  apt-get upgrade -y && \
-  apt-get install -y oracle-java8-installer openssh-server nginx  && \
-  /a/install/supervisor.sh && \
-  rm -rf /var/cache/oracle-jdk8-installer && \
-  rm -rf /var/lib/apt/lists/*
+ENV INSTALL4J_JAVA_HOME /opt/jdk1.8.0_74/jre
+ADD ./config /a/config
+RUN curl http://static.adito.de/common/8A5A3B71FCB0502A884AB8732EA72720C694E54633387BE483/ADITO4_4.4.50_unix.sh > /a/adito.sh \
+    && chmod u+x /a/adito.sh \
+    && /a/adito.sh -q -varfile /a/config/response.varfile-4.5 \
+    && rm -f /a/adito.sh
 
-# Install ADITO4
-ENV AO_VERSION 4.4.40
-ADD install/adito.sh install/adito.varfile /a/install/
-RUN /a/install/adito.sh ${AO_VERSION} F7F5AF98005051811FDE45D326580982B2762C43D27BE5F9187C186BB
+EXPOSE 7779 7778 80
 
-# Additional Setup for ssh
-RUN \
-  mkdir /var/run/sshd && \
-  cp /etc/ssh/sshd_config /etc/ssh/sshd_config~ &&\
-  groupadd adito && \
-  useradd -m -s /bin/bash -G adito,ssh aditouser
+ADD ./start.sh /a/start.sh
+CMD /a/start.sh
 
-
-
-ENV ADATA /a/data
-ENV AINIT /a/init
-ENV ALOG /a/log
-
-VOLUME ["/a/data", "/a/init", "/a/log"]
-
-ADD init /a/init
-RUN chmod +x /a/init/start
-
-CMD ["/a/init/start"]

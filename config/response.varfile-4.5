@@ -1,7 +1,10 @@
-# install4j response file for ADITO4 4.4.0
+# install4j response file for ADITO4 4.5.0
+adito.installer.configureWebstart$Boolean=true
 adito.installer.installservice$Boolean=false
-adito.installer.webstart.host=localhost
-adito.installer.webstart.port$Long=7779
+adito.installer.webstart.connectiontypeStr=NETTY
+adito.installer.webstart.host={WEBSTART_HOST}
+adito.installer.webstart.port$Long=64999
+adito.installer.webstart.url={WEBSTART_URL}
 sys.adminRights$Boolean=true
 sys.component.3368$Boolean=false
 sys.component.Client$Boolean=false
@@ -9,7 +12,7 @@ sys.component.ClientWebstart$Boolean=true
 sys.component.Designer$Boolean=false
 sys.component.Documentation$Boolean=false
 sys.component.Manager$Boolean=false
-sys.component.ProjektSystem$Boolean=true
+sys.component.ProjektSystem$Boolean=false
 sys.component.Server$Boolean=true
 sys.installationDir=/opt/ADITO4
 sys.languageId=en

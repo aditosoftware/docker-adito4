@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preferences EXTERNAL_XML_VERSION="1.0">
+    <root type="system">
+        <map/>
+        <node name="de">
+            <map/>
+            <node name="adito">
+                <map/>
+                <node name="aditoweb">
+                    <map/>
+                    <node name="server">
+                        <map/>
+                        <node name="prefs">
+                            <map>
+                                <entry key="version" value="1.1.1"/>
+                            </map>
+                            <node name="systemdb">
+                                <map>
+                                    <entry key="caching" value="3"/>
+                                    <node name='db alias'>
+                                        <map>
+                                            <entry key='database' value='{SRVCONF_DATABASE}'/>
+                                            <entry key='databasetype' value='{SRVCONF_DATABASETYP}'/>
+                                            <entry key='host' value='{SRVCONF_HOST}'/>
+                                            <entry key='password' value='{SRVCONF_PASSWORD}'/>
+                                            <entry key='port' value='{SRVCONF_PORT}'/>
+                                            <entry key='user' value='{SRVCONF_USER}'/>
+                                        </map>
+                                    </node>
+                                </map>
+                            </node>
+                            <node name="system">
+                                <map>
+                                    <entry key="server id" value="{SRVCONF_SERVER_ID}"/>
+                                </map>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+        </node>
+    </root>
+</preferences>
