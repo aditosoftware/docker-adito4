@@ -2,17 +2,12 @@ cp -f /a/config/ADITO4server.vmoptions /opt/ADITO4/bin/ADITO4server.vmoptions
 cp -f /a/config/serverconfig.xml /opt/ADITO4/config/serverconfig.xml
 
 
-if [ -f /opt/ADITO4/webroot/webstart/config/client_copy.jnlp ]
-then
-cp -f /opt/ADITO4/webroot/webstart/config/client_copy.jnlp /opt/ADITO4/webroot/webstart/config/client.jnlp
-else
-cp -f /opt/ADITO4/webroot/webstart/config/client.jnlp /opt/ADITO4/webroot/webstart/config/client_copy.jnlp
-fi
+cp -f /opt/ADITO4/webroot/webstart/config/template_client.jnlp /opt/ADITO4/webroot/webstart/config/client.jnlp
 
 #Replacement for Webstart
-sed -i s^http://{WEBSTART_URL}/webstart/config^"${WEBSTART_URL}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
-sed -i s/{WEBSTART_HOST}/"${WEBSTART_HOST}"/g /opt/ADITO4/webroot/webstart/config/client.jnlp
-sed -i s/64999/"${WEBSTART_PORT}"/g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^http://host/webstart/config^"${WEBSTART_URL}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^host^"${WEBSTART_HOST}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^7779^"${WEBSTART_PORT}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
 
 #Replacement for serverconfig.xm.
 sed -i s/{WEBSTART_HOST}/"${WEBSTART_HOST}"/g /opt/ADITO4/config/serverconfig.xml
@@ -28,19 +23,6 @@ sed -i s/{SRVCONF_SERVER_ID}/"${SRVCONF_SERVER_ID}"/g /opt/ADITO4/config/serverc
 
 #Replacement for ADITO4-Server vmoptions
 sed -i s/{JVM_XMX}/"${JVM_XMX:-1024M}"/g /opt/ADITO4/bin/ADITO4server.vmoptions
-
-
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-cat /opt/ADITO4/webroot/webstart/config/client.jnlp
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-cat /opt/ADITO4/config/serverconfig.xml
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-cat /opt/ADITO4/bin/ADITO4server.vmoptions
-echo 000000000000000000000000000000000000000000000000000000000000000000000000
-echo "$WEBSTART_URL"
-
 
 
 #Start the Server
