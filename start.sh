@@ -6,11 +6,11 @@ cp -f /opt/ADITO4/webroot/webstart/config/template_client.jnlp /opt/ADITO4/webro
 
 sed -i s^http://host^"${WEBSTART_URL:-"http://${WEBSTART_HOST}"}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
 sed -i s^host^"${WEBSTART_HOST}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
-sed -i s^7779^"${WEBSTART_PORT}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^7779^"${ADITO_PORT:-7779}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
 
 #Default Connection Type for Adito 4.4 is CLASSIC; Default Connection Type for Adito 4.5 is NETTY
-sed -i s^CLASSIC^"${WEBSTART_CONNECTION_TYPE:-"NETTY"}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
-sed -i s^NETTY^"${WEBSTART_CONNECTION_TYPE:-"NETTY"}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^CLASSIC^"${ADITO_CONNECTION_TYPE:-"NETTY"}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
+sed -i s^NETTY^"${ADITO_CONNECTION_TYPE:-"NETTY"}"^g /opt/ADITO4/webroot/webstart/config/client.jnlp
 
 sed -i s/{SRVCONF_DATABASE}/"${SRVCONF_DATABASE}"/g /opt/ADITO4/config/serverconfig.xml
 sed -i s/{SRVCONF_DATABASETYP}/"${SRVCONF_DATABASETYP}"/g /opt/ADITO4/config/serverconfig.xml
