@@ -1,20 +1,20 @@
 adito:
   image: adito/adito4:dev
   environment:
-    - JVM_XMX= # default is 1024M (M = Megabyte; G = Gigabyte)
+#    - JVM_XMX=1024M #Maximum memory allocation pool for Java (M = Megabyte; G = Gigabyte)
 
+#    - WEBSTART_URL= #Only necessary if you use https and/or another port than 80 (example: https://adito4server:443)
     - WEBSTART_HOST= #IP or DNS for the ADITO4-Server
-    - WEBSTART_URL= #only necessary if you use https and/or another port than 80 (example: https://adito4server:443)
-    - WEBSTART_PORT=
-    - WEBSTART_CONNECTION_TYPE= #Default is NETTY
+#    - ADITO_PORT=7779 #Exposed port for ADITO4
+#    - ADITO_CONNECTION_TYPE=NETTY
 
-    - SRVCONF_DATABASE=adito #Name of the Database
-    - SRVCONF_DATABASETYP= #Database-Type (example: 12 = MariaDB; 7 = Derby)
-    - SRVCONF_HOST= #Database Host
-    - SRVCONF_PASSWORD= #Password for the Database-User
-    - SRVCONF_PORT= #Database-Port
-    - SRVCONF_USER= #Database-User
-    - SRVCONF_SERVER_ID= #Server-ID (example: default, production)
+    - SRVCONF_DATABASETYP= #Database type (example: 12 = MariaDB; 7 = Derby)
+    - SRVCONF_DATABASE=adito #Name of the database
+    - SRVCONF_HOST= #Database host
+    - SRVCONF_PORT= #Database port
+    - SRVCONF_USER= #Database user
+    - SRVCONF_PASSWORD= #Password for the database user
+    - SRVCONF_SERVER_ID= #Server ID (example: default, production)
   links:
     - mariadb:mariadb
   ports:
