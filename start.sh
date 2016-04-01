@@ -26,7 +26,3 @@ sed -i s/{JVM_XMX}/"${JVM_XMX:-1024M}"/g /opt/ADITO4/bin/ADITO4server.vmoptions
 
 
 /opt/ADITO4/bin/ADITO4server
-
-
-
-<argument>host</argument>
