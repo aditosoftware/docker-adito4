@@ -11,7 +11,7 @@ ENV INSTALL4J_JAVA_HOME /opt/jre
 
 ADD ./config /a/config
 
-RUN curl http://static.adito.de/common/8A5A3B71FCB0502A884AB8732EA72720C694E54633387BE483/ADITO4_4.4.50_unix.sh > /tmp/adito.sh \
+RUN curl http://static.adito.de/common/4A902D3FB52DB5B62C62A82BB3CFAA72CE1742746FCD649/ADITO4_4.5.31_unix.sh > /tmp/adito.sh \
     && chmod u+x /tmp/adito.sh \
     && /tmp/adito.sh -q -varfile /a/config/response.varfile \
     && rm -rf /tmp/*
