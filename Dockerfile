@@ -9,11 +9,13 @@ RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
     && mv /opt/jdk1.8*/jre /opt/ \
     && rm -rf /opt/jdk1.8*
 
-ENV INSTALL4J_JAVA_HOME /opt/jre
+ENV INSTALL4J_JAVA_HOME='/opt/jre' \
+    LANG='de_DE.UTF-8' \
+    LANGUAGE='de_DE'
 
 ADD ./config /a/config
 
-RUN curl http://static.adito.de/common/install/ADITO4_4.5.50a_unix_DNi3nDi3DSlvnD39D.sh > /tmp/adito.sh \
+RUN curl http://static.adito.de/common/install/ADITO4_4.5.51_unix_d83lFdie30dND03d.sh > /tmp/adito.sh \
     && chmod u+x /tmp/adito.sh \
     && /tmp/adito.sh -q -varfile /a/config/response.varfile \
     && rm -rf /tmp/*
