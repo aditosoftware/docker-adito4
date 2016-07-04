@@ -1,7 +1,11 @@
 FROM ubuntu:16.04
 
 
-RUN apt update -qq && apt install -qqy curl \
+RUN apt-get update -qq && apt-get install -qqy software-properties-common \
+    && add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) multiverse" \
+    && apt-get -qqy remove software-properties-common \
+    && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula boolean true" | debconf-set-selections \
+    && apt-get update -qq && apt-get install -qqy curl fontconfig ttf-mscorefonts-installer \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
