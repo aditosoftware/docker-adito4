@@ -1,9 +1,7 @@
 FROM ubuntu:16.04
 
 
-RUN apt-get update -qq && apt-get install -qqy software-properties-common \
-    && add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) multiverse" \
-    && apt-get -qqy remove software-properties-common \
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" >> /etc/apt/sources.list \
     && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula boolean true" | debconf-set-selections \
     && apt-get update -qq && apt-get install -qqy curl fontconfig ttf-mscorefonts-installer \
     && rm -rf /var/lib/apt/lists/*
@@ -19,7 +17,7 @@ ENV INSTALL4J_JAVA_HOME='/opt/jre' \
 
 ADD ./config /a/config
 
-RUN curl http://static.adito.de/common/install/ADITO4_4.5.60d_unix_d6c453da057fb2329.sh > /tmp/adito.sh \
+RUN curl http://static.adito.de/common/install/ADITO4_4.5.51_unix_d83lFdie30dND03d.sh > /tmp/adito.sh \
     && chmod u+x /tmp/adito.sh \
     && /tmp/adito.sh -q -varfile /a/config/response.varfile \
     && rm -rf /tmp/*
