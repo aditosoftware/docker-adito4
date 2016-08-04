@@ -7,7 +7,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" >> /etc/apt/s
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/8u92-b14/server-jre-8u92-linux-x64.tar.gz | tar -xzf - -C /opt \
+    http://download.oracle.com/otn-pub/java/jdk/8u102-b14/server-jre-8u102-linux-x64.tar.gz | tar -xzf - -C /opt \
     && mv /opt/jdk1.8*/jre /opt/ \
     && rm -rf /opt/jdk1.8*
 
@@ -17,7 +17,7 @@ ENV INSTALL4J_JAVA_HOME='/opt/jre' \
 
 ADD ./config /a/config
 
-RUN curl http://static.adito.de/common/install/ADITO4_4.5.60_unix_1ba86f37620c559c.sh > /tmp/adito.sh \
+RUN curl http://static.adito.de/common/install/ADITO4_4.5.70e_unix_kdndfso30hdsf30sdfpesdf.sh > /tmp/adito.sh \
     && chmod u+x /tmp/adito.sh \
     && /tmp/adito.sh -q -varfile /a/config/response.varfile \
     && rm -rf /tmp/*
