@@ -96,5 +96,5 @@ System ID configured in the ADITO4 designer.
 
 ```console
 $ docker run -d --name some-mariadb -v /my/own/datadir:/var/lib/mysql -e MYSQL_DATABASE=adito4database -e MYSQL_USER=adito -e MYSQL_PASSWORD=secret -e MYSQL_ROOT_PASSWORD=secret2 mariadb:10.1
-$ docker run -d --name some-adito4 -p 7779:7779 -p 8080:80 -e WEBSTART_URL="http://myserver:8080" -e WEBSTART_HOST=myserver -e SRVCONF_DATABASE=adito4database -e SRVCONF_DATABASETYP=12 -e SRVCONF_HOST=mariadb -e SRVCONF_PORT=3306 -e SRVCONF_USER=adito -e SRVCONF_PASSWORD=secret -e SRVCONF_SERVER_ID=default -e JVM_XMX=4G --link some-mariadb:mariadb adito/adito4:dev
+$ docker run -d --name some-adito4 -p 7779:7779 -p 8080:80 -e WEBSTART_URL="http://myserver:8080" -e WEBSTART_HOST=myserver -e SRVCONF_DATABASE=adito4database -e SRVCONF_DATABASETYP=12 -e SRVCONF_HOST=mariadb -e SRVCONF_PORT=3306 -e SRVCONF_USER=adito -e SRVCONF_PASSWORD=secret -e SRVCONF_SERVER_ID=default -e JVM_XMX=4G --link some-mariadb:mariadb adito/adito4
 ```
