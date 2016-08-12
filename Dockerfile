@@ -12,8 +12,9 @@ RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
     && rm -rf /opt/jdk1.8*
 
 ENV INSTALL4J_JAVA_HOME='/opt/jre' \
-    LANG='de_DE.UTF-8' \
-    LANGUAGE='de_DE'
+    LANG='C.UTF-8' \
+    LC_ALL='C.UTF-8' \
+    LANGUAGE='C.UTF-8'
 
 ADD ./config /a/config
 
