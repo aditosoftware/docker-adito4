@@ -1,15 +1,16 @@
 FROM ubuntu:16.04
 
-
 RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" >> /etc/apt/sources.list \
-    && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula boolean true" | debconf-set-selections \
-    && apt-get update -qq && apt-get install -qqy curl fontconfig ttf-mscorefonts-installer \
-    && rm -rf /var/lib/apt/lists/*
+ && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula boolean true" \
+    | debconf-set-selections \
+ && apt-get update -qq && apt-get install -qqy curl fontconfig ttf-mscorefonts-installer \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/8u102-b14/server-jre-8u102-linux-x64.tar.gz | tar -xzf - -C /opt \
-    && mv /opt/jdk1.8*/jre /opt/ \
-    && rm -rf /opt/jdk1.8*
+    http://download.oracle.com/otn-pub/java/jdk/8u102-b14/server-jre-8u102-linux-x64.tar.gz \
+    | tar -xzf - -C /opt \
+ && mv /opt/jdk1.8*/jre /opt/ \
+ && rm -rf /opt/jdk1.8*
 
 ENV INSTALL4J_JAVA_HOME='/opt/jre' \
     LANG='C.UTF-8' \
@@ -19,11 +20,13 @@ ENV INSTALL4J_JAVA_HOME='/opt/jre' \
 ADD ./config /a/config
 
 RUN curl http://static.adito.de/common/install/ADITO4_4.5.73_unix_08d6dda0510ee9b0.sh > /tmp/adito.sh \
-    && chmod u+x /tmp/adito.sh \
-    && /tmp/adito.sh -q -varfile /a/config/response.varfile \
-    && rm -rf /tmp/*
+ && chmod u+x /tmp/adito.sh \
+ && /tmp/adito.sh -q -varfile /a/config/response.varfile \
+ && rm -rf /tmp/*
 
 EXPOSE 7779 7778 80
+
+WORKDIR /opt/ADITO4
 
 ADD ./start.sh /a/start.sh
 RUN chmod u+x /a/start.sh
