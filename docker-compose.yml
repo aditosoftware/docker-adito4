@@ -1,5 +1,5 @@
 adito:
-  image: adito/adito4:dev
+  image: adito/adito4:4.5.73
   environment:
 #    - JVM_XMX=1024M #Maximum memory allocation pool for Java (M = Megabyte; G = Gigabyte)
 
@@ -8,28 +8,29 @@ adito:
 #    - ADITO_PORT=7779 #Exposed port for ADITO4
 #    - ADITO_CONNECTION_TYPE=NETTY
 
-    - SRVCONF_DATABASETYP= #Database type (example: 12 = MariaDB; 7 = Derby)
+    - SRVCONF_DATABASETYP=12 #Database type (example: 12 = MariaDB; 7 = Derby)
     - SRVCONF_DATABASE=adito #Name of the database
-    - SRVCONF_HOST= #Database host
-    - SRVCONF_PORT= #Database port
-    - SRVCONF_USER= #Database user
+    - SRVCONF_HOST=mariadb #Database host
+    - SRVCONF_PORT=3306 #Database port
+    - SRVCONF_USER=adito #Database user
     - SRVCONF_PASSWORD= #Password for the database user
     - SRVCONF_SERVER_ID= #Server ID (example: default, production)
   links:
-    - mariadb:mariadb
+    - mariadb
   ports:
     - "7779:7779" # adito
     - "8080:80" # webstart
   volumes:
     - /volume/adito/serverlicense.jar:/opt/ADITO4/license/serverlicense.jar:ro
+    - /volume/adito/aditodata:/opt/ADITO4Data
 
 mariadb:
   image: mariadb:10.1
   command: mysqld --lower_case_table_names=1
   environment:
     - MYSQL_ROOT_PASSWORD=
-    - MYSQL_DATABASE=
-    - MYSQL_USER=
+    - MYSQL_DATABASE=adito
+    - MYSQL_USER=adito
     - MYSQL_PASSWORD=
   volumes:
     - /volume/mariadb:/var/lib/mysql
