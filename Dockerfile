@@ -27,7 +27,7 @@ RUN curl http://static.adito.de/common/install/ADITO4_4.6.30-RC4_unix.sh > /tmp/
  && /tmp/adito.sh -q -varfile /a/config/response.varfile \
  && rm -rf /tmp/*
 
-EXPOSE 7779 7778 80
+EXPOSE 7934 7779 7778 7733 80
 
 WORKDIR /opt/ADITO4
 
