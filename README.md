@@ -7,7 +7,7 @@
 
 ## What is ADITO4?
 
-ADITO4 is a powerfull CRM software. It´s developed by [ADITO Software GmbH](https://www.adito.de) and written in Java.
+ADITO4 is a powerful CRM software. It´s developed by [ADITO Software GmbH](https://www.adito.de) and written in Java.
 
 
 
