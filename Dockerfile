@@ -10,7 +10,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" >> /etc/apt/s
  && rm -rf /var/lib/apt/lists/* ttf-mscorefonts-installer_3.6_all.deb
 
 RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/server-jre-8u131-linux-x64.tar.gz \
+    http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/server-jre-8u144-linux-x64.tar.gz \
     | tar -xzf - -C /opt \
  && mv /opt/jdk1.8*/jre /opt/ \
  && rm -rf /opt/jdk1.8*
@@ -27,7 +27,7 @@ RUN curl http://static.adito.de/common/install/ADITO4_4.6.90_unix.sh > /tmp/adit
  && /tmp/adito.sh -q -varfile /a/config/response.varfile \
  && rm -rf /tmp/*
 
-EXPOSE 7934 7779 7778 7733 80
+EXPOSE 7934 7779 7778 7733 161/udp 80
 
 WORKDIR /opt/ADITO4
 
