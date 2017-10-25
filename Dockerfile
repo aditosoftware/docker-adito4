@@ -10,7 +10,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" >> /etc/apt/s
  && rm -rf /var/lib/apt/lists/* ttf-mscorefonts-installer_3.6_all.deb
 
 RUN curl -sLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/server-jre-8u144-linux-x64.tar.gz \
+    http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/server-jre-8u151-linux-x64.tar.gz \
     | tar -xzf - -C /opt \
  && mv /opt/jdk1.8*/jre /opt/ \
  && rm -rf /opt/jdk1.8*
